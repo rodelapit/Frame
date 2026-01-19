@@ -1,0 +1,60 @@
+# Future-Proof Portfolio (Scaffold)
+
+This small static scaffold implements the instructions from the "Future-Proof Portfolio Project" activity.
+
+What's included
+- `index.html`: Hero Statement, The Big Three project slots, Currently Learning section, and Contact.
+- `styles.css`: Minimal responsive styles and accessibility focus styles.
+- `.gitignore`: common ignores for simple projects.
+
+How to use (Next.js)
+
+This project has been converted to a minimal Next.js app. To run locally:
+
+1. Install dependencies and start the dev server:
+
+```powershell
+Set-Location 'C:\Users\Student\Documents\Frame\future-proof-portfolio'
+npm install
+npm run dev
+```
+
+2. Open the URL that Next.js prints in your terminal (usually http://localhost:3000).
+
+3. Edit `pages/index.jsx` and `styles/globals.css` to personalize your content and styles.
+
+Deployment to Vercel
+
+1. Commit and push this repository to GitHub.
+2. In Vercel, import the repository and deploy — Vercel will detect Next.js automatically.
+
+Notes
+- If you want to revert to the static Vite build, see your previous commits where the Vite configuration and `index.html` exist.
+
+Tech stack guidance (from the activity)
+- Beginner Path: Simple HTML, CSS, and JavaScript — this scaffold follows that path for maximum portability.
+- Pro Path (Recommended): Next.js or React — choose this if you want server-side rendering, routing, or ready Vercel optimization.
+
+Git-to-Vercel workflow (CI/CD)
+1. Initialize git and commit your files:
+   - `git init` (if not already a repo)
+   - `git add .` and `git commit -m "Initial portfolio scaffold"`
+2. Push to a remote (GitHub/GitLab/Bitbucket):
+   - Create a repository on GitHub and follow the push instructions.
+3. Connect the repository to Vercel:
+   - In Vercel, click "New Project" → Import from Git → select your repo.
+   - For a static site (this scaffold) there is no build command; Vercel will detect it automatically. If using a framework, set the proper build command (for Next.js: `npm run build`) and output folder.
+4. Every git push to the main branch triggers Vercel to build and deploy via CI/CD. Use PR previews to show live changes to reviewers.
+
+Personalization checklist
+- Hero statement: one clear sentence about who you are and what you do.
+- The Big Three: pick three projects that show growth: what you know, what you learned, what you aspire to do.
+- Growth tab: keep a short list of currently learning topics.
+- Add links to GitHub, LinkedIn, and live demos.
+
+Next steps and optional improvements
+- Convert to Next.js for server-side rendering and Vercel optimizations.
+- Add project pages with screenshots and case study write-ups.
+- Add a small test suite (Jest) and a linting pipeline.
+
+Good luck! Tweak content and styling to match your voice and brand. If you want, I can convert this scaffold to a Next.js starter with example project pages and deployment config.

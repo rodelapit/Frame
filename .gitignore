@@ -1,0 +1,13 @@
+# Node and editor
+node_modules/
+.vscode/
+.DS_Store
+
+# Vercel and builds
+.next/
+.vercel/
+dist/
+build/
+
+# OS files
+Thumbs.db
