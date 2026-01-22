@@ -3,29 +3,40 @@ import React from 'react'
 export default function App(){
   return (
     <div>
-      <header className="site-header">
+      <header className="site-header sticky">
         <nav className="nav">
           <a className="brand" href="#">My Name</a>
           <ul className="nav-list">
-            <li><a href="#hero">Home</a></li>
-            <li><a href="#projects">The Big Three</a></li>
-            <li><a href="#growth">Currently Learning</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#growth">Learning</a></li>
             <li><a href="#contact">Contact</a></li>
           </ul>
+          
         </nav>
       </header>
 
       <main>
-        <section id="hero" className="hero">
-          <div className="hero-inner">
-            <h1 className="hero-title">I help build accessible, maintainable web experiences.</h1>
-            <p className="hero-sub">I am a third year IT student from FSUU</p>
+        <section id="about" className="hero">
+          <div className="hero-inner" style={{display: 'flex', alignItems: 'center', gap: '2rem', flexWrap: 'wrap'}}>
+            <img
+              className="hero-image"
+              src="/images/rors.jpg"
+              alt="Profile"
+              style={{width: 200, height: 200, borderRadius: 8, objectFit: 'cover'}}
+            />
+
+            <div className="hero-text">
+              <h1 className="hero-title">About Me</h1>
+              <p className="hero-sub">Third-year IT student at FSUU, focused on clean UX and modern web tooling.</p>
+              <a className="hero-cta" href="#projects">See my work</a>
+            </div>
           </div>
         </section>
 
         <section id="projects" className="section">
-          <h2>The Big Three</h2>
-          <p className="muted">Choose three projects that show growth: what you know, what you learned, and what you're aspiring to do.</p>
+          <h2>Selected Projects</h2>
+          <p className="muted">A snapshot of my skills, growth, and direction.</p>
           <div className="cards">
             <article className="card">
               <h3>1 — What I Know</h3>

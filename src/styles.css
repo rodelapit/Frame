@@ -22,6 +22,17 @@
   --lead-scale: 1.05;
 }
 
+[data-theme="dark"]{
+  --bg: #0b1220;
+  --surface: #121a2a;
+  --text: #e5ecff;
+  --muted: #9aa7bd;
+  --accent: #5aa1ff;
+  --accent-600: #7bb2ff;
+  --shadow-1: 0 6px 20px rgba(0,0,0,0.35);
+  --shadow-2: 0 10px 30px rgba(0,0,0,0.45);
+}
+
 *{box-sizing:border-box}
 html,body{height:100%;margin:0;background:var(--bg);color:var(--text);font-family:var(--font-sans);-webkit-font-smoothing:antialiased}
 img{max-width:100%;height:auto;display:block}
@@ -31,14 +42,20 @@ img{max-width:100%;height:auto;display:block}
 
 /* Header / nav */
 .site-header{padding:18px 0;background:transparent}
+.site-header.sticky{position:sticky;top:0;z-index:50;background:linear-gradient(180deg, rgba(255,255,255,0.85), rgba(255,255,255,0.65));backdrop-filter:saturate(140%) blur(8px)}
+[data-theme="dark"] .site-header.sticky{background:linear-gradient(180deg, rgba(11,18,32,0.85), rgba(11,18,32,0.65))}
 .nav{display:flex;align-items:center;justify-content:space-between}
 .brand{font-weight:700;color:var(--accent);text-decoration:none;font-size:1.1rem}
 .nav-list{list-style:none;margin:0;padding:0;display:flex;gap:16px}
 .nav-list a{display:inline-block;padding:6px 8px;border-radius:6px;color:var(--text);text-decoration:none;font-weight:600}
 .nav-list a:hover{background:rgba(11,107,255,0.06);color:var(--accent-600)}
+[data-theme="dark"] .nav-list a:hover{background:rgba(122,178,255,0.08)}
+.theme-toggle{appearance:none;border:1px solid transparent;background:var(--surface);color:var(--text);box-shadow:var(--shadow-1);border-radius:10px;padding:6px 10px;font-size:1rem;cursor:pointer}
+.theme-toggle:hover{transform:translateY(-1px)}
 
 /* Hero */
 .hero{padding:56px 0;background:linear-gradient(180deg,#ffffff 0%, #f1f6ff 100%)}
+[data-theme="dark"] .hero{background:linear-gradient(180deg,#0f1626 0%, #0b1220 100%)}
 .hero-inner{max-width:900px;margin:0 auto}
 .hero-title{font-size:clamp(1.8rem,4.5vw,2.8rem);line-height:1.05;margin:0 0 12px}
 .hero-sub{margin:0 0 18px;color:var(--muted);font-size:1rem}

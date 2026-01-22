@@ -1,4 +1,5 @@
 import Head from 'next/head'
+import Header from '../components/Header'
 
 export default function Home(){
   return (
@@ -8,48 +9,42 @@ export default function Home(){
         <meta name="viewport" content="width=device-width,initial-scale=1" />
       </Head>
 
-      <header className="site-header container">
-        <nav className="nav">
-          <a className="brand" href="#">Your Name</a>
-          <ul className="nav-list">
-            <li><a href="#hero">Home</a></li>
-            <li><a href="#projects">The Big Three</a></li>
-            <li><a href="#growth">Currently Learning</a></li>
-            <li><a href="#contact">Contact</a></li>
-          </ul>
-        </nav>
-      </header>
+      <Header />
 
       <main>
-        <section id="hero" className="hero">
-          <div className="container hero-inner">
-            <h1 className="hero-title">I help build accessible, maintainable web experiences.</h1>
-            <p className="hero-sub">I am a third year IT student from FSUU</p>
+        <section id="about" className="hero">
+          <div className="container hero-inner about-layout">
+            <img className="about-image" src="/images/rors.jpg" alt="Profile" />
+            <div className="about-text">
+              <h1 className="hero-title">About Me</h1>
+              <p className="hero-sub">I am a motivated individual with a strong interest in web systems and modern technologies. I enjoy learning new tools, designing user-friendly interfaces, and building systems that solve real-world problems. I am always eager to improve my skills and grow as a technology professional.</p>
+              <a className="cta" href="#projects">See my work</a>
+            </div>
           </div>
         </section>
 
         <section id="projects" className="section">
           <div className="container">
-            <h2>The Big Three</h2>
-            <p className="muted">Choose three projects that show growth: what you know, what you learned, and what you're aspiring to do.</p>
+            <h2>Selected Projects</h2>
+            <p className="muted">A quick snapshot of my skills, growth, and direction.</p>
             <div className="cards">
-              <article className="card">
+              <a className="card" href="/projects/what-i-know">
                 <h3>1 — What I Know</h3>
-                <p className="card-desc">A reliable, polished project demonstrating core HTML/CSS/JavaScript skills and accessibility.</p>
-                <a className="card-link" href="#">View project →</a>
-              </article>
+                <p className="card-desc">Reliable, polished work demonstrating core HTML/CSS/JS and accessibility.</p>
+                <span className="card-link">View project →</span>
+              </a>
 
-              <article className="card">
+              <a className="card" href="/projects/what-i-learned">
                 <h3>2 — What I Learned</h3>
-                <p className="card-desc">A project that highlights a growth area (e.g., testing, performance optimization, a new framework).</p>
-                <a className="card-link" href="#">View project →</a>
-              </article>
+                <p className="card-desc">Highlights a growth area (testing, performance, or a new framework).</p>
+                <span className="card-link">View project →</span>
+              </a>
 
-              <article className="card">
+              <a className="card" href="/projects/aspiring">
                 <h3>3 — What I'm Aspiring To</h3>
-                <p className="card-desc">A forward-looking project showing direction (e.g., full-stack feature, advanced UX, tooling).</p>
-                <a className="card-link" href="#">View project →</a>
-              </article>
+                <p className="card-desc">Forward-looking work showing direction (full‑stack features, advanced UX, tooling).</p>
+                <span className="card-link">View project →</span>
+              </a>
             </div>
           </div>
         </section>
@@ -57,11 +52,11 @@ export default function Home(){
         <section id="growth" className="section">
           <div className="container">
             <h2>Currently Learning</h2>
-            <p>Show recruiters that you have a growth mindset. Keep this list concise and update it frequently.</p>
-            <ul>
-              <li>Server-side rendering with Next.js</li>
-              <li>TypeScript for safer code</li>
-              <li>Automated testing (Jest + React Testing Library)</li>
+            <p className="lead">Currently learning core concepts of my subject, including web system development, UI/UX principles, and the use of modern technologies to build functional and user-friendly applications.</p>
+            <ul className="learning-list" aria-label="Topics I'm learning">
+              <li>Web system development</li>
+              <li>UI/UX principles</li>
+              <li>Modern technologies for functional apps</li>
             </ul>
           </div>
         </section>
@@ -69,7 +64,7 @@ export default function Home(){
         <section id="contact" className="section contact">
           <div className="container">
             <h2>Contact</h2>
-            <p>Connect: <a href="#">github.com/your-username</a> • <a href="#">linkedin.com/in/yourname</a></p>
+            <p>Email: <a href="mailto:rodel.apit@urios.edu.ph">rodel.apit@urios.edu.ph</a></p>
           </div>
         </section>
       </main>
