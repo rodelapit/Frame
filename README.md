@@ -58,36 +58,23 @@ Next steps and optional improvements
 
 Good luck! Tweak content and styling to match your voice and brand. If you want, I can convert this scaffold to a Next.js starter with example project pages and deployment config.
 
-## Contact Form Email
+## Contact Form (Formspree)
 
-The contact form posts to `pages/api/send-email.js`. It supports a serverless-friendly provider (SendGrid) and an optional SMTP fallback.
+This project is configured to use Formspree for handling contact form submissions (frontend-only, no backend).
 
-- Required env vars (see `.env.example`):
-   - `TO_EMAIL`: Your Gmail address to receive messages.
-   - `SENDGRID_API_KEY`: API key from SendGrid.
-   - `FROM_EMAIL`: A verified sender in SendGrid (Single Sender or domain-verified address).
-- Optional SMTP (not recommended on Vercel):
-   - `SMTP_HOST`, `SMTP_PORT`, `SMTP_USER`, `SMTP_PASS` (for Gmail use an App Password).
+- Setup:
+   - Create a form in Formspree and copy its endpoint (e.g., `https://formspree.io/f/xxxxxxx`).
+   - Add `NEXT_PUBLIC_FORMSPREE_ENDPOINT` in your environment (local `.env.local` and Vercel → Environment Variables).
+   - In Formspree’s dashboard, set the recipient to your Gmail and verify it.
 
-### Local setup
+- Local:
+   - Set `NEXT_PUBLIC_FORMSPREE_ENDPOINT` in `.env.local` and run `npm run dev`.
+   - Submit the form at `/` and check your Gmail (Spam/Promotions first time).
 
-1. Copy `.env.example` to `.env.local` and fill values.
-2. Run `npm run dev` and submit the form at `/`.
+- Vercel:
+   - Add `NEXT_PUBLIC_FORMSPREE_ENDPOINT` in Project Settings → Environment Variables (Production/Preview) and redeploy.
+   - The contact form will POST directly to Formspree; no serverless functions are used.
 
-### Vercel deployment
-
-1. In your Vercel project settings → Environment Variables, add:
-    - `TO_EMAIL`, `SENDGRID_API_KEY`, `FROM_EMAIL` (at least in “Production”).
-2. Redeploy. The API route will use SendGrid over HTTPS (works on Vercel). SMTP may be blocked on Vercel.
-3. In SendGrid, verify a Single Sender identity or domain so `FROM_EMAIL` is authorized, otherwise emails will be rejected.
-
-Tips
-- You can set `TO_EMAIL` to your Gmail. Messages will arrive in your inbox; check Spam if testing.
-- The API includes basic validation and a hidden honeypot field to reduce spam.
-
-### Formspree (No backend option)
-- If you prefer not to manage an email provider, use Formspree:
-   - Create a form at Formspree and copy its endpoint (e.g., `https://formspree.io/f/xxxxxxx`).
-   - Add `NEXT_PUBLIC_FORMSPREE_ENDPOINT` in your env (local `.env.local` and Vercel → Environment Variables).
-   - The frontend will POST directly to Formspree when this variable is present; otherwise it uses `/api/send-email`.
-   - Set Formspree to deliver to your Gmail in its dashboard.
+Notes
+- The frontend includes basic validation and a hidden honeypot field to reduce spam.
+- If you later prefer an email provider (SendGrid/SMTP), reintroduce an API route (e.g., `/api/send-email`) and add the provider SDK.

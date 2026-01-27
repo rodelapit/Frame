@@ -6,15 +6,11 @@
     "dev": "next dev -p 3000",
     "build": "next build",
     "start": "next start -p 3000",
-    "lint": "next lint",
-    "test:email": "node scripts/test-email.mjs",
-    "test:health": "node scripts/test-health.mjs"
+    "lint": "next lint"
   },
   "dependencies": {
     "next": "^13.5.0",
     "react": "^18.2.0",
-    "react-dom": "^18.2.0",
-    "nodemailer": "^6.9.2",
-    "@sendgrid/mail": "^7.7.0"
+    "react-dom": "^18.2.0"
   }
 }
