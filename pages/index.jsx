@@ -1,5 +1,6 @@
 import Head from 'next/head'
 import Header from '../components/Header'
+import ContactForm from '../components/ContactForm'
 
 export default function Home(){
   return (
@@ -64,7 +65,8 @@ export default function Home(){
         <section id="contact" className="section contact">
           <div className="container">
             <h2>Contact</h2>
-            <p>Email: <a href="mailto:rodel.apit@urios.edu.ph">rodel.apit@urios.edu.ph</a></p>
+            <p>If you'd like to reach me, send a message using the form below or email <a href="mailto:rodel.apit@urios.edu.ph">rodel.apit@urios.edu.ph</a>.</p>
+            <ContactForm />
           </div>
         </section>
       </main>

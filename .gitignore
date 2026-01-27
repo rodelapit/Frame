@@ -9,5 +9,12 @@ node_modules/
 dist/
 build/
 
+# Next.js static export
+out/
+
 # OS files
 Thumbs.db
+
+# Env files
+.env.local
+.env.*.local

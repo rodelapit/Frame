@@ -121,3 +121,17 @@ a:focus, .card-link:focus, .cta:focus{outline:3px solid rgba(11,107,255,0.16);ou
 }
 
 .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+
+/* Contact form styles */
+.contact-form{max-width:720px;margin-top:18px}
+.contact-form .form-row{display:flex;gap:1rem;flex-wrap:wrap;align-items:flex-start}
+.contact-form label{display:flex;flex-direction:column;flex:1;min-width:220px;font-weight:600;margin-bottom:8px}
+.contact-form input,.contact-form textarea{padding:10px;border:1px solid rgba(12,18,30,0.12);border-radius:8px;font-size:1rem;background:var(--surface);color:var(--text);width:100%;box-sizing:border-box}
+.contact-form textarea{min-height:140px;resize:vertical}
+.contact-form .form-actions{margin-top:10px}
+.contact-form button{background:var(--accent);color:#fff;padding:8px 14px;border-radius:8px;border:none;cursor:pointer;font-weight:700}
+.contact-form button:disabled{opacity:0.6;cursor:default}
+.contact-form input:focus,.contact-form textarea:focus{outline:3px solid rgba(11,107,255,0.12);outline-offset:2px}
+.form-success{color:green;margin-top:10px}
+.form-error{color:#b00020;margin-top:10px}
+@media (max-width:600px){.contact-form .form-row{flex-direction:column}}

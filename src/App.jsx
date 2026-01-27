@@ -1,4 +1,5 @@
 import React from 'react'
+import ThemeToggle from '../components/ThemeToggle'
 
 export default function App(){
   return (
@@ -12,7 +13,7 @@ export default function App(){
             <li><a href="#growth">Learning</a></li>
             <li><a href="#contact">Contact</a></li>
           </ul>
-          
+          <ThemeToggle />
         </nav>
       </header>
 
