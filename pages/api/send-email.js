@@ -48,60 +48,11 @@ export default async function handler(req, res) {
   const SENDGRID_API_KEY = process.env.SENDGRID_API_KEY
   const FROM_EMAIL = process.env.FROM_EMAIL
 
-  // Try SendGrid if configured (preferred)
-  if (SENDGRID_API_KEY && FROM_EMAIL) {
-    try {
-      sendgrid.setApiKey(SENDGRID_API_KEY)
-      const msg = {
-        to: toEmail,
-        from: FROM_EMAIL,
-        subject: `Website message from ${trimmed.name}`,
-        text: `${trimmed.message}\n\nFrom: ${trimmed.name} <${trimmed.email}>`,
-        html: `<p>${escapeHTML(trimmed.message).replace(/\n/g, '<br/>')}</p><hr/><p>From: ${escapeHTML(trimmed.name)} &lt;${escapeHTML(trimmed.email)}&gt;</p>`,
-        replyTo: trimmed.email
-      }
-      await sendgrid.send(msg)
-      return res.status(200).json({ ok: true, provider: 'sendgrid' })
-    } catch (err) {
-      console.error('sendgrid error', err)
-      // fallback to SMTP below if available
-    }
-  }
-
-  // Fallback to SMTP via nodemailer
-  const host = process.env.SMTP_HOST
-  const port = process.env.SMTP_PORT ? Number(process.env.SMTP_PORT) : undefined
-  const user = process.env.SMTP_USER
-  const pass = process.env.SMTP_PASS
-
-  if (!host || !port || !user || !pass) {
-    return res.status(500).json({ error: 'Email server not configured. Set SENDGRID_API_KEY+FROM_EMAIL or SMTP_HOST, SMTP_PORT, SMTP_USER, SMTP_PASS.' })
-  }
-
-  try {
-    const transporter = nodemailer.createTransport({
-      host,
-      port,
-      secure: port === 465,
-      auth: { user, pass }
+  export default function handler(req, res) {
+    // Disabled: backend send-email removed in Formspree-only setup.
+    res.status(410).json({
+      ok: false,
+      disabled: true,
+      message: 'send-email endpoint removed. Using Formspree.',
     })
-
-    const mail = {
-      from: `${trimmed.name} <${trimmed.email}>`,
-      to: toEmail,
-      subject: `Website message from ${trimmed.name}`,
-      text: `${trimmed.message}\n\n---\nFrom: ${trimmed.name} <${trimmed.email}>`,
-      html: `<p>${escapeHTML(trimmed.message).replace(/\n/g, '<br/>')}</p><hr/><p>From: ${escapeHTML(trimmed.name)} &lt;${escapeHTML(trimmed.email)}&gt;</p>`,
-      replyTo: trimmed.email
-    }
-
-    await transporter.sendMail(mail)
-    return res.status(200).json({ ok: true, provider: 'smtp' })
-  } catch (err) {
-    console.error('send-email error', err)
-    if (process.env.NODE_ENV !== 'production') {
-      return res.status(500).json({ error: 'Failed to send email', details: err.message, stack: err.stack })
-    }
-    return res.status(500).json({ error: 'Failed to send email' })
   }
-}
