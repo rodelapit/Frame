@@ -7,6 +7,15 @@ const nextConfig = {
   typescript: {
     ignoreBuildErrors: true,
   },
+  webpack: (config) => {
+    config.resolve = config.resolve || {}
+    config.resolve.alias = {
+      ...(config.resolve.alias || {}),
+      nodemailer: false,
+      '@sendgrid/mail': false,
+    }
+    return config
+  },
 }
 
 module.exports = nextConfig
